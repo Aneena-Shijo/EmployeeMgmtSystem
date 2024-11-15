@@ -1,0 +1,33 @@
+﻿@model EmployeeMgmtSystem.Models.Employee
+@{
+    ViewData["Title"] = "Employee Details";
+}
+
+<h1>Employee Details</h1>
+
+<div>
+    <label>Employee ID:</label>
+    <span>@Model.EmployeeID</span>
+</div>
+<div>
+    <label>First Name:</label>
+    <span>@Model.FirstName</span>
+</div>
+<div>
+    <label>Last Name:</label>
+    <span>@Model.LastName</span>
+</div>
+<div>
+    <label>Position:</label>
+    <span>@Model.Position</span>
+</div>
+<div>
+    <label>Department:</label>
+    <span>@Model.Department</span>
+</div>
+<div>
+    <label>Date of Hire:</label>
+    <span>@Model.DateOfHire.ToString("yyyy-MM-dd")</span>
+</div>
+
+<a href="@Url.Action("Index", "Employee")">Back to Employee List</a>

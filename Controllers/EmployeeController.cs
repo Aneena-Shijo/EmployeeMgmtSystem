@@ -1,4 +1,4 @@
-﻿// Controllers/EmployeeController.cs
+﻿
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using EmployeeMgmtSystem.Repositories;
@@ -50,7 +50,7 @@ namespace EmployeeMgmtSystem.Controllers
         }
 
         // Edit Employee Page
-        [Authorize(Roles = "Admin")]
+       
         public async Task<IActionResult> Edit(int id)
         {
             var employee = await _employeeRepository.GetEmployeeByIdAsync(id);
@@ -60,7 +60,7 @@ namespace EmployeeMgmtSystem.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        
         public async Task<IActionResult> Edit(Employee employee)
         {
             if (ModelState.IsValid)
@@ -72,7 +72,7 @@ namespace EmployeeMgmtSystem.Controllers
         }
 
         // Delete Employee
-        [Authorize(Roles = "Admin")]
+        
         public async Task<IActionResult> Delete(int id)
         {
             var employee = await _employeeRepository.GetEmployeeByIdAsync(id);
@@ -82,11 +82,12 @@ namespace EmployeeMgmtSystem.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
-        [Authorize(Roles = "Admin")]
+       
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             await _employeeRepository.DeleteEmployeeAsync(id);
             return RedirectToAction(nameof(Index));
+          
         }
     }
 }

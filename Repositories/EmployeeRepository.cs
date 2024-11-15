@@ -1,5 +1,6 @@
 ﻿using EmployeeMgmtSystem.Data;
 using EmployeeMgmtSystem.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -27,18 +28,21 @@ namespace EmployeeMgmtSystem.Repositories
             return await _context.Employees.FindAsync(employeeId);
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task AddEmployeeAsync(Employee employee)
         {
             await _context.Employees.AddAsync(employee);
             await _context.SaveChangesAsync();
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task UpdateEmployeeAsync(Employee employee)
         {
             _context.Employees.Update(employee);
             await _context.SaveChangesAsync();
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task DeleteEmployeeAsync(int employeeId)
         {
             var employee = await _context.Employees.FindAsync(employeeId);
